@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class SignupComponent {
   signupForm: FormGroup;
+  router: any;
 
   constructor(private fb: FormBuilder, private authService: AuthService) {
     this.signupForm = this.fb.group({
@@ -28,4 +29,5 @@ export class SignupComponent {
       });
     }
   }
+  
 }

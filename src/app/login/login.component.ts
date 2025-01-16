@@ -28,6 +28,7 @@ export class LoginComponent {
   }
 
   onLogin() {
+    console.log('Login button clicked');
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe((users: any) => {
         if (users.length > 0) {

@@ -40,6 +40,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    alert(
+      'Please post only meaningful and appropriate content. Let\'s maintain a respectful and constructive environment.'
+    );
+    
     this.fetchUserBlogs();
   }
 
