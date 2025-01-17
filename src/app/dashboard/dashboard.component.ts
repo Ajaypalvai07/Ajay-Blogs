@@ -4,12 +4,13 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { SliceContentPipe } from '../../slice-content.pipe';
+import { environment } from '../../environments/environment'; // Import the environment config
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  imports: [FormsModule, CommonModule, HttpClientModule,SliceContentPipe], 
+  imports: [FormsModule, CommonModule, HttpClientModule, SliceContentPipe],
   providers: [AuthService]
 })
 export class DashboardComponent implements OnInit {
@@ -22,14 +23,14 @@ export class DashboardComponent implements OnInit {
     category: '',
     featured: false,
     private: false,
-    image: '', 
+    image: '',
     date: new Date(),
     likes: 0,
     author: '',
     comments: [],
   };
 
-  selectedImage: string | ArrayBuffer | null = null; 
+  selectedImage: string | ArrayBuffer | null = null;
 
   isEditing: boolean = false;
   editingBlogId: number | null = null;
@@ -48,12 +49,12 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchUserBlogs() {
-    this.http.get<any[]>(`http://localhost:3000/blogs?author=${this.currentUser.email}`).subscribe((blogs) => {
+    // Using the environment apiUrl for development or production
+    this.http.get<any[]>(`${environment.apiBaseUrl}/blogs?author=${this.currentUser.email}`).subscribe((blogs) => {
       // Filter blogs based on the 'private' status
       this.userBlogs = blogs.filter(blog => !blog.private || blog.author === this.currentUser.email);
     });
   }
-  
 
   saveBlog() {
     if (this.isEditing) {
@@ -65,30 +66,31 @@ export class DashboardComponent implements OnInit {
 
   createBlog() {
     const blog = { ...this.newBlog, author: this.currentUser.email };
-    this.http.post('http://localhost:3000/blogs', blog).subscribe(() => {
+    // Using environment.apiUrl to create blog
+    this.http.post(`${environment.apiBaseUrl}/blogs`, blog).subscribe(() => {
       this.fetchUserBlogs();
       this.resetForm();
     });
   }
 
   updateBlog() {
-    this.http
-      .put(`http://localhost:3000/blogs/${this.editingBlogId}`, this.newBlog)
-      .subscribe(() => {
-        this.fetchUserBlogs();
-        this.resetForm();
-      });
+    // Using environment.apiUrl to update blog
+    this.http.put(`${environment.apiBaseUrl}/blogs/${this.editingBlogId}`, this.newBlog).subscribe(() => {
+      this.fetchUserBlogs();
+      this.resetForm();
+    });
   }
 
   editBlog(blog: any) {
     this.isEditing = true;
     this.editingBlogId = blog.id;
     this.newBlog = { ...blog };
-    this.selectedImage = blog.image || null; 
+    this.selectedImage = blog.image || null;
   }
 
   deleteBlog(blogId: number) {
-    this.http.delete(`http://localhost:3000/blogs/${blogId}`).subscribe(() => {
+    // Using environment.apiUrl to delete blog
+    this.http.delete(`${environment.apiBaseUrl}/blogs/${blogId}`).subscribe(() => {
       this.fetchUserBlogs();
     });
   }
@@ -96,7 +98,7 @@ export class DashboardComponent implements OnInit {
   resetForm() {
     this.isEditing = false;
     this.editingBlogId = null;
-    this.selectedImage = null; 
+    this.selectedImage = null;
     this.newBlog = {
       title: '',
       content: '',
@@ -111,23 +113,21 @@ export class DashboardComponent implements OnInit {
     };
   }
 
-  
   onImageUrlInput(event: Event) {
     const input = event.target as HTMLInputElement;
     this.selectedImage = input.value;
     this.newBlog.image = input.value;
   }
 
-  
   onImageSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onload = () => {
-        this.selectedImage = reader.result; 
-        this.newBlog.image = file.name; 
+        this.selectedImage = reader.result;
+        this.newBlog.image = file.name;
       };
-      reader.readAsDataURL(file); 
+      reader.readAsDataURL(file);
     }
   }
 }

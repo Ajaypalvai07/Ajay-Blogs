@@ -6,6 +6,8 @@ import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { HighlightDirective } from '../../highlight.directive';
 import { CapitalizePipe } from '../../captilize-content.pipe';
+import { environment } from '../../environments/environment';
+
 
 @Component({
   selector: 'app-blog-details',
@@ -59,7 +61,7 @@ export class BlogDetailsComponent implements OnInit, OnChanges, DoCheck {
 
   fetchBlogDetails(blogId: string | null) {
     if (blogId) {
-      this.http.get<any>(`http://localhost:3000/blogs/${blogId}`).subscribe((data) => {
+      this.http.get<any>(`${environment.apiBaseUrl}/blogs/${blogId}`).subscribe((data) => {
         this.blog = data;
         this.comments = data.comments || [];
         this.reactions = data.reactions || this.reactions;
@@ -78,7 +80,7 @@ export class BlogDetailsComponent implements OnInit, OnChanges, DoCheck {
       this.comments.push(comment);
       this.blog.comments = this.comments;
 
-      this.http.put(`http://localhost:3000/blogs/${this.blog.id}`, this.blog).subscribe(() => {
+      this.http.put(`${environment.apiBaseUrl}/blogs/${this.blog.id}`, { comments: this.comments }).subscribe(() => {
         this.newComment = '';
       });
     }
@@ -100,8 +102,9 @@ export class BlogDetailsComponent implements OnInit, OnChanges, DoCheck {
   }
 
   updateReactions() {
-    this.blog.reactions = this.reactions;
-    this.blog.userReaction = this.currentReaction; // Save the current reaction for the user
-    this.http.put(`http://localhost:3000/blogs/${this.blog.id}`, this.blog).subscribe();
+    this.http.put(`${environment.apiBaseUrl}/blogs/${this.blog.id}`, {
+      reactions: this.reactions,
+      userReaction: this.currentReaction,
+    }).subscribe();
   }
 }

@@ -5,15 +5,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SliceContentPipe } from '../../slice-content.pipe';
-// import { UppercaseContentPipe } from '../../uppercase-content.pipe';
 import { CapitalizePipe } from '../../captilize-content.pipe';
-
+import { environment } from '../../environments/environment';  // Import environment
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  imports: [FormsModule, CommonModule, HttpClientModule, RouterModule,SliceContentPipe,CapitalizePipe],
+  imports: [FormsModule, CommonModule, HttpClientModule, RouterModule, SliceContentPipe, CapitalizePipe],
   providers: [AuthService]
 })
 export class HomeComponent implements OnInit {
@@ -32,7 +31,8 @@ export class HomeComponent implements OnInit {
   }
 
   fetchBlogs(): void {
-    this.http.get<any[]>('http://localhost:3000/blogs').subscribe((blogs) => {
+    const apiUrl = `${environment.apiBaseUrl}/blogs`;  // Use the apiBaseUrl from environment
+    this.http.get<any[]>(apiUrl).subscribe((blogs) => {
       this.blogs = blogs;
       this.featuredPosts = this.getFeaturedPosts(blogs);
       this.latestPosts = this.getLatestPosts(blogs);
@@ -71,15 +71,13 @@ export class HomeComponent implements OnInit {
   }
 
   handleReaction(post: any, reactionType: string): void {
-    
     if (!post.likes) post.likes = 0;
     if (!post.unlike) post.unlike = 0;
     if (!post.love) post.love = 0;
     if (!post.sad) post.sad = 0;
     if (!post.haha) post.haha = 0;
     if (!post.informative) post.informative = 0;
-  
-    
+
     if (this.userReactions[post.id]) {
       if (this.userReactions[post.id] !== reactionType) {
         this.removeReaction(post, this.userReactions[post.id]);
@@ -90,12 +88,11 @@ export class HomeComponent implements OnInit {
     } else {
       this.addReaction(post, reactionType);
     }
-  
+
     this.updateBlog(post);
   }
-  
+
   addReaction(post: any, reactionType: string): void {
-   
     if (reactionType === 'like') {
       post.likes += 1;
     } else if (reactionType === 'unlike') {
@@ -109,13 +106,11 @@ export class HomeComponent implements OnInit {
     } else if (reactionType === 'informative') {
       post.informative += 1;
     }
-  
-    
+
     this.userReactions[post.id] = reactionType;
   }
-  
+
   removeReaction(post: any, reactionType: string): void {
-    
     if (reactionType === 'like') {
       post.likes -= 1;
     } else if (reactionType === 'unlike') {
@@ -130,12 +125,12 @@ export class HomeComponent implements OnInit {
       post.informative -= 1;
     }
   }
-  
+
   updateBlog(post: any): void {
-    
-    this.http.put(`http://localhost:3000/blogs/${post.id}`, post).subscribe({
+    const apiUrl = `${environment.apiBaseUrl}/blogs/${post.id}`;  // Use the apiBaseUrl from environment
+    this.http.put(apiUrl, post).subscribe({
       next: () => console.log(`Blog ${post.id} updated successfully.`),
       error: (err) => console.error('Error updating blog:', err)
     });
   }
-}  
+}
