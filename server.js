@@ -13,6 +13,6 @@ server.use(middlewares);  // Use default middlewares
 server.use(router);  // Use the router for handling requests
 
 // Set the port to 3000, or use the environment port if available
-server.listen(process.env.PORT || 3000,'0.0.0.0',  () => {
+server.listen(process.env.PORT || 10000,'0.0.0.0',  () => {
   console.log('JSON Server is running');
 });
