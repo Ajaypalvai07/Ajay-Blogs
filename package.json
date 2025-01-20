@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:blogging-websitajay": "node dist/blogging-websitajay/server/server.mjs",
-    "start:json": "json-server --watch db.json --port $PORT --cors"
+    "start:json": "json-server --watch db.json --port $PORT "
   },
   "private": true,
   "dependencies": {

@@ -51,22 +51,7 @@
   ],
   "blogs": [
     {
-      "id": "073d",
-      "title": "The Impact of Social Media on Mental Health",
-      "content": "Social media has revolutionized the way we communicate and connect with others, but it also has a profound impact on mental health. While platforms like Facebook, Instagram, and Twitter allow users to share their lives and stay in touch with friends and family, they can also lead to feelings of inadequacy and anxiety. Constant comparison to others, particularly in the case of idealized images or lifestyles, can negatively affect self-esteem. Additionally, excessive social media use has been linked to symptoms of depression and loneliness, especially when users feel disconnected from real-world interactions. On the flip side, social media can also provide support networks for individuals dealing with mental health challenges, fostering a sense of belonging and understanding. It’s important for individuals to be mindful of their social media use and recognize when it is affecting their mental well-being. Setting boundaries and taking regular breaks can help maintain a healthy relationship with these platforms.",
-      "category": "Mental Health, Social Media",
-      "featured": false,
-      "private": false,
-      "image": "https://www.wscubetech.com/blog/wp-content/uploads/2024/04/social-media-1024x683.webp",
-      "date": "2024-12-01T13:13:48.614Z",
-      "likes": 0,
-      "author": "vijay23@gmail.com",
-      "comments": [],
-      "unlike": 1,
-      "love": 0,
-      "sad": 0,
-      "haha": 0,
-      "informative": 0
+      "id": "073d"
     },
     {
       "id": "5e3b",
@@ -77,7 +62,7 @@
       "private": false,
       "image": "https://img.freepik.com/free-photo/shop-online-internet-shopping-store-concept_53876-125430.jpg?semt=ais_hybrid",
       "date": "2024-12-01T13:17:09.702Z",
-      "likes": 1,
+      "likes": 3,
       "author": "vijay23@gmail.com",
       "comments": [
         {
@@ -108,7 +93,7 @@
       ],
       "sad": 0,
       "love": 0,
-      "unlike": 7,
+      "unlike": 8,
       "haha": 0,
       "informative": 0,
       "reactions": {
@@ -155,7 +140,7 @@
       "private": false,
       "image": "https://www.shutterstock.com/shutterstock/photos/2505156727/display_1500/stock-photo-rockets-on-fire-against-the-backdrop-of-the-russian-flag-on-a-cracked-concrete-wall-war-russian-2505156727.jpg",
       "date": "2024-12-02T06:49:40.563Z",
-      "likes": 1,
+      "likes": 2,
       "author": "vasu@314gmail.com",
       "comments": [
         {
@@ -179,7 +164,7 @@
           "date": "2024-12-20T08:20:52.481Z"
         }
       ],
-      "unlike": 5,
+      "unlike": 6,
       "love": 0,
       "sad": 0,
       "haha": 0,
@@ -222,48 +207,15 @@
       "userReaction": "love"
     },
     {
-      "id": "5d33",
-      "title": "Private",
-      "content": "Prvt",
-      "category": "pvt",
-      "featured": false,
-      "private": true,
-      "image": "https://www.shutterstock.com/image-photo/abstract-digital-background-ai-letters-600nw-2499111213.jpg",
-      "date": "2024-12-02T06:53:26.895Z",
-      "likes": 1,
-      "author": "vijay23@gmail.com",
-      "comments": [],
-      "unlike": 0,
-      "love": 0,
-      "sad": 0,
-      "haha": 0,
-      "informative": 0
-    },
-    {
-      "id": "6b55",
-      "title": "private work?",
-      "content": "private is working",
-      "category": "pvt",
-      "featured": false,
-      "private": true,
-      "image": "https://www.wscubetech.com/blog/wp-content/uploads/2024/04/social-media-1024x683.webp",
-      "date": "2024-12-02T06:58:03.738Z",
-      "likes": 0,
-      "author": "vijay23@gmail.com",
-      "comments": [],
-      "unlike": 1,
-      "love": 0,
-      "sad": 0,
-      "haha": 0,
-      "informative": 0,
       "reactions": {
         "like": 0,
         "love": 0,
-        "sad": 1,
+        "sad": 0,
         "haha": 0,
-        "informative": 0
+        "informative": 1
       },
-      "userReaction": "sad"
+      "userReaction": "informative",
+      "id": "5d33"
     },
     {
       "id": "1369",
@@ -382,33 +334,6 @@
       },
       "userReaction": "like",
       "unlike": 1,
-      "love": 0,
-      "sad": 0,
-      "haha": 0,
-      "informative": 0
-    },
-    {
-      "id": "7235",
-      "title": "hfdre",
-      "content": "fddrd",
-      "category": "chshc",
-      "featured": true,
-      "private": false,
-      "image": "https://www.shutterstock.com/shutterstock/photos/2505156727/display_1500/stock-photo-rockets-on-fire-against-the-backdrop-of-the-russian-flag-on-a-cracked-concrete-wall-war-russian-2505156727.jpg",
-      "date": "2025-01-16T10:01:32.329Z",
-      "likes": 1,
-      "author": "ajaynaidu18239@gmail.com",
-      "comments": [],
-      "like": 1,
-      "reactions": {
-        "like": 0,
-        "love": 0,
-        "sad": 1,
-        "haha": 0,
-        "informative": 0
-      },
-      "userReaction": "sad",
-      "unlike": 0,
       "love": 0,
       "sad": 0,
       "haha": 0,

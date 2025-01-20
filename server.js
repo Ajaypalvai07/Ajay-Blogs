@@ -1,16 +1,18 @@
 const jsonServer = require('json-server');
-const cors = require('cors');  // Importing the cors module
+const cors = require('cors');
 const server = jsonServer.create();
-const router = jsonServer.router('db.json'); // Ensure db.json exists
+const router = jsonServer.router('db.json');  // Ensure db.json exists
 const middlewares = jsonServer.defaults();
 
-server.use(cors());  // Enable CORS
-server.use(middlewares);  // Use default middlewares
+// Enable CORS for a specific origin (replace with your actual Angular app URL on Render)
+server.use(cors({
+  origin: 'https://ajay-blogs.onrender.com'  // Replace with your actual URL
+}));
 
+server.use(middlewares);  // Use default middlewares
 server.use(router);  // Use the router for handling requests
 
-// Set the port to 3000, or use environment port if available
-const port = process.env.PORT || 3000; 
-server.listen(port, () => {
-  console.log(`JSON Server is running on port ${port}`);
+// Set the port to 3000, or use the environment port if available
+server.listen(process.env.PORT || 3000, () => {
+  console.log('JSON Server is running');
 });
